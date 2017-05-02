@@ -1,14 +1,10 @@
 var router = require('koa-router')();
 
-router.get('/', async function (ctx, next) {
-  ctx.state = {
-    style:['stylesheets/banner.css']
-  };
+const home = require('./home');
+const users = require('./users');
 
-  await ctx.render('index', {
-  });
-})
+router.use('/index', home.routes(), home.allowedMethods());
+router.use('/users', users.routes(), users.allowedMethods());
 
 
-
-module.exports = router;
+module.exports = router
