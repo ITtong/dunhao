@@ -17,7 +17,8 @@ function findDimensions() //函数：获取尺寸
         winWidth = document.documentElement.clientWidth;
     }
     // 结果改变banner的高度
-    $('#banner').css('height',winHeight+'px');
+    /*$('#carousel-example-generic').css('height',winHeight+'px');*/
+    $('.banner_img').css('height',winHeight+'px');
 }
 findDimensions();
 //调用函数，获取数值
