@@ -8,15 +8,15 @@ var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',
     paginationClickable: true,
     centeredSlides: true,
-    autoplay: 5000,
+    /*autoplay: 10000,*/
     autoplayDisableOnInteraction: false,
     onSlideChangeEnd:function(swiper) {
-        $('.swiper-slide-active>a').addClass('active')
-        $('.swiper-slide-active>p').addClass('active')
+        $('.swiper-slide-active a').addClass('active')
+        $('.swiper-slide-active p').addClass('active')
     },
     onSlideChangeStart:function() {
-        $('.swiper-slide>a').removeClass('active');
-        $('.swiper-slide>p').removeClass('active');
+        $('.swiper-slide a').removeClass('active');
+        $('.swiper-slide p').removeClass('active');
     }
 });
 

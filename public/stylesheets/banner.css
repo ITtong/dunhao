@@ -33,24 +33,42 @@ body {
     -webkit-align-items: center;
     align-items: center;
 }
+.every_case{
+    overflow: hidden;
+    width:1200px; 
+    margin:0 auto; 
+    height:220px; 
+    position:absolute; 
+    bottom:8%;
+}
 
 .position_button {
     position: absolute;
-    top:50%;
-    left:30%;
+    bottom:10px;
+    left:190px;
     opacity: 0;
+    padding:5px 10px;
+    border:2px solid #fff;
+    border-radius:6px;
+    color:#fff;
+    font-size: 24px;
 }
 .position_title {
     position: absolute;
-    top:40%;
-    left:30%;
+    bottom:70px;
+    left:190px;
     opacity: 0;
+    color:#fff;
+    font-size: 46px;
+
 }
 .position_detail {
     position: absolute;
-    top:30%;
-    left:30%;
+    bottom:135px;
+    left:190px;
     opacity: 0;
+    color:#fff;
+    font-size: 20px;
 }
 
 .active {
@@ -59,36 +77,49 @@ body {
     opacity: 1;
 }
 
-
-@keyframes bounceInLeft {
-  from, 60%, 75%, 90%, to {
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
   }
 
-  0% {
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes zoomInDown {
+  from {
     opacity: 0;
-    transform: translate3d(-3000px, 0, 0);
+    transform: scale3d(.1, .1, .1) translate3d(0, -1000px, 0);
+    animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
   }
 
   60% {
     opacity: 1;
-    transform: translate3d(25px, 0, 0);
-  }
-
-  75% {
-    transform: translate3d(-10px, 0, 0);
-  }
-
-  90% {
-    transform: translate3d(5px, 0, 0);
-  }
-
-  to {
-    transform: none;
+    transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
   }
 }
 
 
 .position_button.active{
-    animation-name: bounceInLeft;
+    animation-name: slideInLeft;
+}
+.position_title.active{
+    animation-name: zoomInDown;
+}
+.position_detail.active{
+    animation-name: slideInDown;
 }
