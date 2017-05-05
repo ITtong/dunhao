@@ -8,7 +8,7 @@ var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',
     paginationClickable: true,
     centeredSlides: true,
-    /*autoplay: 10000,*/
+    autoplay: 10000,
     autoplayDisableOnInteraction: false,
     onSlideChangeEnd:function(swiper) {
         $('.swiper-slide-active a').addClass('active')
