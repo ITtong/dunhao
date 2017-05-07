@@ -8,9 +8,11 @@ module.exports = router.get('/get', function (ctx, next) {
 		url:url,
 		data:request
 	}
-	
 })
 .post('/post',function(ctx, next) {
 	let post = parsePostData(ctx)
 	ctx.body = post;
+})
+.get('/getForm',async function (ctx, next) {
+	await ctx.render('formTest', {});
 })
