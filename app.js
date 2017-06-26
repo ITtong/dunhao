@@ -8,6 +8,16 @@ const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser')();
 const logger = require('koa-logger');
 const ejs = require('ejs');
+const monk = require('monk');
+
+// db
+const url = '127.0.0.1:27017/myProjectDb';
+const db = monk(url);
+db.then(()=>{
+	console.log('Connected correctly to server')
+})
+
+
 
 const router = require('./routes/index');
 
@@ -31,9 +41,6 @@ app.use(async (ctx, next) => {
 
 
 app.use(router.routes(), router.allowedMethods());
-
-//app.use(router.routes()).use(router.allowedMethods())
-// response
 
 app.on('error', function(err, ctx){
   console.log(err)

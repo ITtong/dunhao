@@ -1,4 +1,7 @@
-var router = require('koa-router')();
+const router = require('koa-router')();
+const url = '127.0.0.1:27017/myProjectDb';
+const db = require('monk')(url);
+const collection = db.get('document');
 
 module.exports = router.get('/get', function (ctx, next) {
 	let url = ctx.url;
@@ -13,5 +16,28 @@ module.exports = router.get('/get', function (ctx, next) {
 })
 .post('/post',function(ctx, next) { // 获取post请求参数；
 	let post = ctx.request.body
+	collection.insert([post])
+	.then((docs)=>{
+
+	})
+	.catch((err)=>{
+		console.log(err);
+	})
+	.then(()=>{
+		db.close()
+	})
 	ctx.body = post;
+})
+.get('/mongo',async function (ctx, next) {
+	collection.find()
+	.then((docs)=>{
+		ctx.state = {
+			data:docs
+		}
+ 	})
+ 	.catch((err)=>{
+		console.log(err);
+	})
+	.then(()=>db.close())
+	await ctx.render('mongo',{})
 })
